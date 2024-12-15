@@ -1,0 +1,18 @@
+---
+import HeaderLink from "../HeaderLink.astro";
+import { menu } from "@/config/menu";
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        menu.map((item) => (
+          <li>
+            <HeaderLink link={item.link}>{item.name}</HeaderLink>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
