@@ -1,0 +1,18 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import { configSite } from "@/config/configSite";
+import "@fontsource-variable/Inter/index.css";
+import "@fontsource-variable/bricolage-grotesque/index.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={configSite.title} description={configSite.description} />
+  </head>
+  <body class="dark:bg-zinc-950 bg-zinc-50 antialiased text-zinc-900 dark:text-white selection:bg-zinc-700 selection:text-zinc-100 dark:selection:bg-zinc-500 dark:selection:text-white">
+    <slot />
+    <script src="src/scripts/darkMode.js"></script>
+    <script src="src/scripts/menu.js"></script>
+  </body>
+</html>

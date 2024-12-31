@@ -1,21 +1,32 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "@/components/partials/Header.astro";
-import Footer from "@/components/partials/Footer.astro";
-import { configSite } from "../config/configSite";
+import Layout from "@/layouts/Layout.astro";
+import { menu } from "@/config/menu";
+import HomeLink from "@/components/HomeLink.astro";
+import ThemeToggle from "@/components/ThemeToggle.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title={configSite.site_title}
-      description={configSite.site_description}
-    />
-  </head>
-  <body>
-    <Header />
-    <main><h1>🧑‍🚀 Hello, Astronaut!</h1></main>
-    <Footer />
-  </body>
-</html>
+<Layout>
+  <article class="px-4 w-full h-screen flex flex-col justify-center">
+    <header class="w-full max-w-xl mx-auto flex flex-col mb-10">
+      <div class="mb-5 flex items-center justify-between">
+        <p class="font-secondary text-neutral-650">Florianópolis, SC</p>
+        <ThemeToggle />
+      </div>
+      <div>
+        <h1 class="font-bold text-4xl">Bruna Gonçalves</h1>
+        <p>Web Developer</p>
+      </div>
+    </header>
+    <nav class="w-full max-w-xl mx-auto">
+      <ul>
+        {
+          menu.map((item) => (
+            <li>
+              <HomeLink {...item} />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </article>
+</Layout>

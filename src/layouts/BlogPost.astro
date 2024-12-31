@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from '@/components/partials/Header.astro';
+import Footer from '@/components/partials/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -54,7 +54,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</style>
 	</head>
 
-	<body>
+	<body class="dark:bg-zinc-950 bg-zinc-50 antialiased text-zinc-900 dark:text-white selection:bg-zinc-700 selection:text-zinc-100 dark:selection:bg-zinc-500 dark:selection:text-white">
 		<Header />
 		<main>
 			<article>
@@ -62,7 +62,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
-					<div class="title">
+					<div class="title">s
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -81,5 +81,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			</article>
 		</main>
 		<Footer />
+		<script src="src/scripts/darkMode.js"></script>
 	</body>
 </html>

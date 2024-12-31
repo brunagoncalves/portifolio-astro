@@ -1,0 +1,16 @@
+---
+import { shop } from "@/config/shop";
+import Layout from "@/layouts/Layout.astro";
+import CardShop from "@/components/CardShop.astro";
+import Header from "@/components/partials/Header.astro";
+---
+
+<Layout>
+  <Header />
+  <section class="w-full mx-auto max-w-6xl px-4">
+    <h1 class="my-14 text-4xl font-bold">Shop</h1>
+    <div class="grid gap-6">
+      {shop.map((item) => <CardShop {...item} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/partials/Header.astro";
+import { project } from "@/config/projects";
+import CardProject from "@/components/CardProject.astro";
+---
+
+<Layout>
+  <Header />
+  <section class="w-full mx-auto max-w-6xl px-4">
+    <h1 class="my-14 text-4xl font-bold">My Projects</h1>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center items-center">
+      {project.map((item) => <CardProject {...item} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,15 @@
+---
+import type { ShopType } from "@/types/shopType";
+
+const { image, product, link, description } = Astro.props as ShopType;
+---
+
+<article class="bg-white dark:bg-zinc-900 flex flex-col sm:flex-row items-center gap-6 rounded-[15px] overflow-hidden p-6 shadow-sm">
+  <img class="w-full max-w-48 h-auto block" src={image} alt={product} />
+  <div>
+    <a class="hover:text-green-600" href={link}><h2 class="font-bold mb-4">{product}</h2></a>
+    <p class="font-secondary font-light text-sm tracking-wide">
+      {description}
+    </p>
+  </div>
+</article>

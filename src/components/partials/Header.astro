@@ -1,18 +1,59 @@
 ---
-import HeaderLink from "../HeaderLink.astro";
 import { menu } from "@/config/menu";
+import HeaderLink from "../HeaderLink.astro";
+import ThemeToggle from "../ThemeToggle.astro";
 ---
 
-<header>
-  <nav>
-    <ul>
+<header class="bg-white dark:bg-zinc-900">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+    <ul class="hidden lg:flex justify-evenly space-x-6">
+      <li><a class="block font-semibold text-sm dark:text-white text-zinc-900 hover:text-zinc-600 dark:hover:text-zinc-300" href="/">Home</a></li>
       {
         menu.map((item) => (
           <li>
-            <HeaderLink link={item.link}>{item.name}</HeaderLink>
+            <HeaderLink name={item.name} href={item.href} />
           </li>
         ))
       }
     </ul>
+    <!-- Mobile Menu Button -->
+    <button type="button" data-menu-button class="lg:hidden -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-zinc-900 dark:text-white">
+      <span class="sr-only">Open main menu</span>
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+
+    <ThemeToggle />
   </nav>
+
+  <!-- Backdrop -->
+  <div data-backdrop class="fixed inset-0 bg-black/20 backdrop-blur-sm hidden lg:hidden"></div>
+
+  <!-- Mobile Menu Panel -->
+  <div data-mobile-menu class="lg:hidden fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white dark:bg-zinc-900 px-6 py-6 sm:max-w-sm transform -translate-x-full transition-transform duration-300 ease-in-out" role="dialog" aria-modal="true">
+    <div class="flex items-center justify-between mb-6">
+      <a href="/" class="block font-semibold text-lg dark:text-white text-zinc-900">
+        Home
+      </a>
+      <button type="button" data-close-button class="-m-2.5 rounded-md p-2.5 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800">
+        <span class="sr-only">Close menu</span>
+        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mt-6 flow-root">
+      <ul class="space-y-4">
+        {
+          menu.map((item) => (
+            <li>
+              <HeaderLink name={item.name} href={item.href} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </header>

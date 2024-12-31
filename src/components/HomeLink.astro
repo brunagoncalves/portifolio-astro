@@ -1,0 +1,14 @@
+---
+import type { MenuTypes } from "@/types/menuTypes";
+
+const { name, href, description } = Astro.props as MenuTypes;
+---
+
+<a
+  href={href}
+  aria-label={description}
+  class="mb-5 p-5 flex flex-col bg-white dark:bg-zinc-900 text-zinc-950 dark:text-white rounded-[15px] shadow-sm"
+>
+  <span class="font-bold mb-3">{name}</span>
+  <span class="font-light text-sm font-secondary">{description}</span>
+</a>
