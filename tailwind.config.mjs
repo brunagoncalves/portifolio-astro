@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter Variable", "Inter", ...defaultTheme.fontFamily.sans],
-        secondary: ["Bricolage Grotesque Variable", "sans-serif"],
+        sans: ["Inter", "serif", ...defaultTheme.fontFamily.sans],
+        secondary: ["Bricolage Grotesque", "serif"],
       },
       colors: {
         zinc: {
