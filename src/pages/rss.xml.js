@@ -5,8 +5,8 @@ import { configSite } from "../config/configSite";
 export async function GET(context) {
   const posts = await getCollection("blog");
   return rss({
-    title: configSite.site_title,
-    description: configSite.site_description,
+    title: configSite.title,
+    description: configSite.description,
     site: context.site,
     items: posts.map((post) => ({
       ...post.data,
